@@ -1,0 +1,135 @@
+Description: Created for Dr. Green's ISA course. Version 1. Last modified 11/11/2021.
+
+Resources:
+  isa3210VPC:
+    Type: 'AWS::EC2::VPC'
+    Description: Creates a VPC for instances.
+    Properties:
+      CidrBlock: 10.2.0.0/16
+      Tags:
+        - Key: Name
+          Value: isa3210VPC
+  
+  
+  isaCF:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Used for Ec2 Instance Connect and SSH.
+      GroupName: isaCF
+      SecurityGroupIngress:
+        - IpProtocol: -1
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: isaCF
+      VpcId:
+        Ref: isa3210VPC
+  
+  
+  myInternetGatewayCF:
+    Type: 'AWS::EC2::InternetGateway'
+    Description: Created to establish internet needed for Ec2 Instance Connect.
+    Properties:
+      Tags:
+        - Key: Name
+          Value: myInternetGatewayCF
+  
+  
+  SubnetRouteTableAssociation:
+    Type: 'AWS::EC2::SubnetRouteTableAssociation'
+    Description: Used for public subnet for Ec2 Instance Connect.
+    Properties:
+      RouteTableId: !Ref myRouteTableCF
+      SubnetId: !Ref Subnet
+  
+  
+  myInternetGatewayCFAttachment:
+    Type: 'AWS::EC2::VPCGatewayAttachment'
+    Description: Gateway used for vpc connectivity for instances.
+    Properties:
+      InternetGatewayId:
+        Ref: myInternetGatewayCF
+      VpcId:
+        Ref: isa3210VPC
+  
+  
+  myRouteTableCF:
+    Type: 'AWS::EC2::RouteTable'
+    Description: Used to route VPC traffic to instances.
+    Properties:
+      Tags:
+        - Key: Name
+          Value: myRouteTableCF
+      VpcId:
+        Ref: isa3210VPC
+  
+  
+  IGWRoute:
+    Type: 'AWS::EC2::Route'
+    Description: Actual route used with Internet Gateway and Route Table.
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: myInternetGatewayCF
+      RouteTableId:
+        Ref: myRouteTableCF
+  
+  
+  Subnet:
+    Type: 'AWS::EC2::Subnet'
+    Description: Public Subnet used as logical subdvision of IP network and used to connect to instance.
+    Properties:
+      CidrBlock: 10.2.1.0/24
+      Tags:
+        - Key: Name
+          Value: Subnet
+      VpcId:
+        Ref: isa3210VPC
+  
+  
+  isaEC2:
+    Type: 'AWS::EC2::Instance'
+    Description: Creates a virtual environment for user use.
+    Properties:
+      ImageId: ami-047a51fa27710816e
+      InstanceType: t2.micro
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId:
+            Ref: Subnet
+          DeleteOnTermination: true
+          GroupSet:
+            - Ref: isaCF
+      Tags:
+        - Key: Name
+          Value: isaEC2a
+  
+  
+  isaEC22:
+    Type: 'AWS::EC2::Instance'
+    Description: Creates a virtual environment for user use.
+    Properties:
+      ImageId: ami-047a51fa27710816e
+      InstanceType: t2.micro
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId:
+            Ref: Subnet
+          DeleteOnTermination: true
+          GroupSet:
+            - Ref: isaCF
+      Tags:
+        - Key: Name
+          Value: isaEC2b
