@@ -43,7 +43,7 @@ To install Terraform, follow the appropriate steps for your operating system:
 10. Click on the "Create Account and Continue" button.
 11. AWS will now perform a verification process to confirm your identity. This may involve a phone call or SMS message verification. Follow the instructions provided to complete this step.
 
-### Step 3: AWS Keys
+### Step 3: Generate AWS Keys
 
 1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/).
 2. In the navigation pane, choose "IAM".
@@ -52,6 +52,7 @@ To install Terraform, follow the appropriate steps for your operating system:
 5. Choose the "Security credentials" tab.
 6. In the "Access keys" section, choose "Create access key".
 7. Save the access key ID and secret access key to a secure location on your computer, such as a password manager or encrypted file.
+
 #### Windows
 
 1. Open the Windows start menu and type "Environment Variables".
