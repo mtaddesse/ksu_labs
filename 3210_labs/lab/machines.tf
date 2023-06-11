@@ -1,3 +1,8 @@
+resource "aws_key_pair" "lab" {
+  key_name   = "lab-key"
+  public_key = var.public_key
+}
+
 resource "aws_security_group" "allow_http_https_ssh" {
   name_prefix = "allow_http_https_ssh"
   ingress {
@@ -24,8 +29,8 @@ resource "aws_instance" "ubuntu_instance" {
   count         = 2
   ami           = var.ami
   instance_type = var.instance_type
-  key_name      = "my-keypair"
-  security_groups = [aws_security_group.allow_http_https_ssh.id]
+  key_name      = aws_key_pair.lab.key_name
+  vpc_security_group_ids = [aws_security_group.allow_http_https_ssh.id]
 
   connection {
     type        = "ssh"
@@ -33,12 +38,5 @@ resource "aws_instance" "ubuntu_instance" {
     private_key = file("~/.ssh/id_rsa")
     timeout     = "2m"
     host        = self.public_ip
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update",
-      "sudo apt-get install -y nginx"
-    ]
   }
 }
