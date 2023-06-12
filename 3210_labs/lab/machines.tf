@@ -45,4 +45,8 @@ resource "aws_instance" "ubuntu_instance" {
     timeout     = "2m"
     host        = self.public_ip
   }
+
+  tags = {
+    Name = "System ${count.index + 1}"
+  }
 }
