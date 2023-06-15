@@ -14,5 +14,5 @@ variable "instance_type" {
 
 variable "ami" {
   description = "The AMI to use for the Ubuntu instances"
-  default     = "ami-0dba2cb6798deb6d8" # Ubuntu 20.04 LTS
+  default     = "ami-024e6efaf93d85776" # Ubuntu 20.04 LTS
 }
