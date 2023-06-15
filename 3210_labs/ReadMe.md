@@ -46,12 +46,9 @@ To install Terraform, follow the appropriate steps for your operating system:
 ### Step 3: Generate AWS Keys
 
 1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/).
-2. In the navigation pane, choose "IAM".
-3. Choose "Users" from the side menu.
-4. Choose the user account that you want to generate access keys for.
-5. Choose the "Security credentials" tab.
-6. In the "Access keys" section, choose "Create access key".
-7. Save the access key ID and secret access key to a secure location on your computer, such as a password manager or encrypted file.
+2. Click the drop down in the top right and select Security Credentials
+3. In the "Access keys" section, choose "Create access key".
+4. Save the access key ID and secret access key to a secure location on your computer, such as a password manager or encrypted file.
 
 #### Windows
 
