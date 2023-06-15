@@ -50,6 +50,8 @@ To install Terraform, follow the appropriate steps for your operating system:
 3. In the "Access keys" section, choose "Create access key".
 4. Save the access key ID and secret access key to a secure location on your computer, such as a password manager or encrypted file.
 
+*NOTE:* This is using the root account for access keys. 
+
 #### Windows
 
 1. Open the Windows start menu and type "Environment Variables".
