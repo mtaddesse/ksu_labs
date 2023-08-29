@@ -137,7 +137,7 @@ Once you have installed Terraform, follow these steps to initialize the module:
 
 ### Step 2: Deploying the Infrastructure
 
-Once you have initialized the module and created the `terraform.tfvars` file, follow these steps to deploy the infrastructure:
+Once you have initialized the module, follow these steps to deploy the infrastructure:
 
 1. Open a terminal and navigate to the root directory of the module.
 2. Run `terraform apply` to preview the changes that Terraform will make.
