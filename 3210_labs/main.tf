@@ -1,5 +1,5 @@
 module "ubuntu_instances" {
-  source = "./lab"
+  source = "./module"
 
   // Put SSH Key between the quotes
   public_key    = ""

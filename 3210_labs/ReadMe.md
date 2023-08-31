@@ -15,8 +15,13 @@ To install Terraform, follow the appropriate steps for your operating system:
 #### Windows
 
 1. Download the appropriate package for your system from the [Terraform downloads page](https://www.terraform.io/downloads.html).
-2. Extract the downloaded archive to a directory in your system's PATH.
-3. Open a command prompt and run `terraform version` to verify that Terraform is installed and in your system's PATH.
+2. Extract the downloaded archive to `$HOME\terraform`.
+3. Open a command prompt and run `cd terraform`
+4. Rrun `./terraform version` to verify that Terraform is installed and in your system's PATH.
+5. Open the Windows start menu and type "Environment Variables".
+6. Choose "Edit the system environment variables".
+7. Click on the "Environment Variables" button.
+8. Modify the PATH ariable to include the `$HOME\terraform` directory
 
 #### Mac
 
@@ -97,10 +102,11 @@ export AWS_SECRET_ACCESS_KEY=SECRET_ACCESS_KEY
 
 #### Windows
 
-1. Open the Command Prompt by typing "cmd" in the Windows search bar and clicking on the "Command Prompt" application.
-2. Type `ssh-keygen` and press enter.
-3. Follow the prompts to specify the file name and location of the key pair.
-4. Press enter twice to accept the default passphrase, or enter a new passphrase if desired.
+1. Ensure that OpenSSH is installed (https://phoenixnap.com/kb/generate-ssh-key-windows-10)
+2. Open the Command Prompt by typing "cmd" in the Windows search bar and clicking on the "Command Prompt" application.
+3. Type `ssh-keygen` and press enter.
+4. Follow the prompts to specify the file name and location of the key pair.
+5. Press enter twice to accept the default passphrase, or enter a new passphrase if desired.
 
 #### Mac
 
@@ -133,6 +139,7 @@ Once you have installed Terraform, follow these steps to initialize the module:
 2. Open a terminal and navigate to the root directory of the module.
 3. Run `terraform init` to download any necessary dependencies.
 4. Copy the public key that was generated earlier as the value on line 4 in the `main.tf` file
+    * NOTE: With Windows you will need to remove the `domain\username` piece or you will recieve an error*
 5. Update the public_key and AMI in the `main.tf` file.
 
 ### Step 2: Deploying the Infrastructure
@@ -146,7 +153,9 @@ Once you have initialized the module, follow these steps to deploy the infrastru
 
 ### Step 3: Run the Lab
 
-Refer to the lab manual
+1. Run a `sudo apt-get update`
+2. Run `sudo apt-install net-tools`
+3. Refer to the lab manual
 
 ### Step 4: Destroying the Infrastructure
 
