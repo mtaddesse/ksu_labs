@@ -8,7 +8,43 @@
 
 ## Computer Setup
 
-### Step 1: Installing Terraform
+### Step 1: Git Clone
+
+### Windows:
+
+1. **Open Command Prompt:**
+   - Press `Win + R` to open the Run dialog, type `cmd`, and press Enter.
+
+2. **Navigate to the Directory:**
+   - Use the `cd` command to navigate to your desired directory:
+     ```bash
+     cd Documents
+     ```
+
+3. **Clone the Repository:**
+   - Clone the repository using the `git clone` command:
+     ```bash
+     git clone https://github.com/AndyGreenPhD/ksu_labs.git
+     ```
+
+### Mac and Linux:
+
+1. **Open Terminal:**
+   - Launch the Terminal application.
+
+2. **Navigate to the Directory:**
+   - Use the `cd` command to navigate to your desired directory:
+     ```bash
+     cd Documents
+     ```
+
+3. **Clone the Repository:**
+   - Clone the repository using the `git clone` command:
+     ```bash
+     git clone https://github.com/AndyGreenPhD/ksu_labs.git
+     ```
+
+### Step 2: Installing Terraform
 
 To install Terraform, follow the appropriate steps for your operating system:
 
@@ -34,7 +70,7 @@ To install Terraform, follow the appropriate steps for your operating system:
 2. Extract the downloaded archive to a directory in your system's PATH.
 3. Open a terminal and run `terraform version` to verify that Terraform is installed and in your system's PATH.
 
-### Step 2: Creating AWS Account
+### Step 3: Creating AWS Account
 
 1. Open your web browser and go to the AWS Management Console website at https://console.aws.amazon.com.
 2. Click on the "Create a new AWS account" button. 
@@ -48,7 +84,7 @@ To install Terraform, follow the appropriate steps for your operating system:
 10. Click on the "Create Account and Continue" button.
 11. AWS will now perform a verification process to confirm your identity. This may involve a phone call or SMS message verification. Follow the instructions provided to complete this step.
 
-### Step 3: Generate AWS Keys
+### Step 4: Generate AWS Keys
 
 1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/).
 2. Click the drop down in the top right and select Security Credentials
@@ -98,7 +134,7 @@ export AWS_SECRET_ACCESS_KEY=SECRET_ACCESS_KEY
 5. Save and close the file.
 6. Type `source ~/.bash_profile` to reload the Bash profile.
 
-### Step 4: Generating SSH Keys
+### Step 5: Generating SSH Keys
 
 #### Windows
 
