@@ -8,41 +8,41 @@
 
 ## Computer Setup
 
-### Step 1: Git Clone
+### Step 1: Download the Repo
 
-### Windows:
+1. Open a web browser and go to the GitHub repository you want to download.
+2. Click the green "Code" button on the right side of the repository page.
+3. Choose "Download ZIP" to download the repository as a ZIP file.
+4. Save the ZIP file to Documents
 
-1. **Open Command Prompt:**
-   - Press `Win + R` to open the Run dialog, type `cmd`, and press Enter.
+#### Windows
 
-2. **Navigate to the Directory:**
-   - Use the `cd` command to navigate to your desired directory:
-     ```bash
-     cd Documents
-     ```
+1. Find the downloaded ZIP file in Documents
+2. Right-click the ZIP file and select "Extract All..."
+3. Choose Documents as the location for the extracted files and click "Extract."
+4. A new folder with the repository's name will be created.
 
-3. **Clone the Repository:**
-   - Clone the repository using the `git clone` command:
-     ```bash
-     git clone https://github.com/AndyGreenPhD/ksu_labs.git
-     ```
+#### macOS
 
-### Mac and Linux:
+1. Find the downloaded ZIP file in Documents
+2. Double-click the ZIP file to extract its contents.
+3. A new folder with the repository's name will be created.
 
-1. **Open Terminal:**
-   - Launch the Terminal application.
+#### Linux
 
-2. **Navigate to the Directory:**
-   - Use the `cd` command to navigate to your desired directory:
-     ```bash
-     cd Documents
-     ```
+1. Open the terminal.
+2. Navigate to the directory where the downloaded ZIP file is located using the `cd` command.
+3. Use the `unzip` command to extract the contents of the ZIP file:
+   ```
+   unzip repository-folder.zip
+   ```
+4. A new folder with the repository's name will be created.
+5. Use the `mv` command to move the extracted folder to the Documents folder:
+   ```
+   mv repository-folder ~/Documents/
+   ```
 
-3. **Clone the Repository:**
-   - Clone the repository using the `git clone` command:
-     ```bash
-     git clone https://github.com/AndyGreenPhD/ksu_labs.git
-     ```
+Replace "repository-folder" with the actual name of the folder that was created after extracting the ZIP file, and adjust file paths and folder names as needed. After following these steps, the repository contents should be in your Documents folder.
 
 ### Step 2: Installing Terraform
 
@@ -90,49 +90,8 @@ To install Terraform, follow the appropriate steps for your operating system:
 2. Click the drop down in the top right and select Security Credentials
 3. In the "Access keys" section, choose "Create access key".
 4. Save the access key ID and secret access key to a secure location on your computer, such as a password manager or encrypted file.
-
-*NOTE:* This is using the root account for access keys. 
-
-#### Windows
-
-1. Open the Windows start menu and type "Environment Variables".
-2. Choose "Edit the system environment variables".
-3. Click on the "Environment Variables" button.
-4. Under "System Variables", click "New".
-5. Enter "AWS_ACCESS_KEY_ID" for the variable name and paste in the access key ID as the variable value.
-6. Click "OK".
-7. Click "New" again.
-8. Enter "AWS_SECRET_ACCESS_KEY" for the variable name and paste in the secret access key as the variable value.
-9. Click "OK".
-
-#### Mac
-
-1. Open a Terminal window.
-2. Type `touch ~/.bash_profile` to create a new Bash profile.
-3. Type `open ~/.bash_profile` to open the Bash profile in a text editor.
-4. Add the following lines to the end of the file, replacing `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` with your actual access key ID and secret access key:
-
-```
-export AWS_ACCESS_KEY_ID=ACCESS_KEY_ID
-export AWS_SECRET_ACCESS_KEY=SECRET_ACCESS_KEY
-```
-
-5. Save and close the file.
-6. Type `source ~/.bash_profile` to reload the Bash profile.
-
-#### Linux
-
-1. Open a Terminal window.
-2. Type `touch ~/.bash_profile` to create a new Bash profile.
-3. Type `nano ~/.bash_profile` to open the Bash profile in a text editor.
-4. Add the following lines to the end of the file, replacing `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` with your actual access key ID and secret access key:
-
-```
-export AWS_ACCESS_KEY_ID=ACCESS_KEY_ID
-export AWS_SECRET_ACCESS_KEY=SECRET_ACCESS_KEY
-```
-5. Save and close the file.
-6. Type `source ~/.bash_profile` to reload the Bash profile.
+5. Within the `KSU_LABS/3210_labs` folder in your Documents open the `_init.tf` file in the `module` directory
+6. Paste your access key and secret key into the provider block on lines 3 and 4. 
 
 ### Step 5: Generating SSH Keys
 
@@ -189,9 +148,18 @@ Once you have initialized the module, follow these steps to deploy the infrastru
 
 ### Step 3: Run the Lab
 
-1. Run a `sudo apt-get update`
-2. Run `sudo apt-install net-tools`
-3. Refer to the lab manual
+1. Log into the AWS Console
+2. Navigate to the EC2 tab (you may have to search for it in the top bar)
+3. In the top right it may say "N. Virigina", "Ohio", etc. Click the drop down and choose `us-east-2`
+4. Click instances on the EC2 page
+5. You should see 2 machines running. From here you can get the Public IPv4 Address for the instance
+6. SSH into the instance
+``` bash
+ssh -i <<PATH TO YOUR SSH KEY>> ubuntu@<<PUBLIC IPv4 ADDRESS>>
+```
+7. From within the SSH session Run `sudo apt-get update`
+8. Run `sudo apt-install net-tools`
+9. Refer to the lab assignment available to you in D2L
 
 ### Step 4: Destroying the Infrastructure
 
