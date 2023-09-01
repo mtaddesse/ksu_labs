@@ -10,7 +10,7 @@
 
 ### Step 1: Download the Repo
 
-1. Open a web browser and go to the GitHub repository you want to download.
+1. Open a web browser and go to https://github.com/AndyGreenPhD/ksu_labs
 2. Click the green "Code" button on the right side of the repository page.
 3. Choose "Download ZIP" to download the repository as a ZIP file.
 4. Save the ZIP file to Documents
